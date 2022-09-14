@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
-use App\Http\Requests\StoreUsuarioRequest;
-use App\Http\Requests\UpdateUsuarioRequest;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
@@ -27,7 +25,24 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Forma 1 de criar registros
+        // $usuario = new Usuario;
+        // $usuario->nome = $request->input('nome');
+        // $usuario->email = $request->input('email');
+        // $usuario->password = bcrypt($request->input('password'));
+        // $usuario->save();
+
+        // Forma 2 de criar registros
+
+        $usuario = Usuario::create([
+            "nome" => $request->input('nome'),
+            "email" => $request->input('email'),
+            "password" => bcrypt($request->input('password')),
+        ]);
+
+        return response()->json([
+            "data" => $usuario
+        ], 201);
     }
 
     /**
