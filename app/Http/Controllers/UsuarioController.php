@@ -14,7 +14,9 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = Usuario::simplePaginate(10);
+
+        return response()->json($usuarios);
     }
 
     /**
@@ -51,9 +53,20 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function show(Usuario $usuario)
+    public function show($usuario)
     {
-        //
+        $usuario = Usuario::find($usuario);
+
+        if ($usuario == null) {
+            return response()->json([
+                "msg" => "Usuário não encontrado"
+            ], 404);
+        }
+
+        return response()->json([
+            "data" => $usuario
+        ]);
+        // dd($usuario);
     }
 
     /**
