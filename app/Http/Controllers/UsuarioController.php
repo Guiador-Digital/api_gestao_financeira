@@ -95,6 +95,10 @@ class UsuarioController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        Usuario::destroy($usuario->id);
+
+        return response()->json([
+            "msg" => "O usuário " . $usuario->nome . " foi excluído com sucesso!"
+        ]);
     }
 }
