@@ -66,7 +66,6 @@ class UsuarioController extends Controller
         return response()->json([
             "data" => $usuario
         ]);
-        // dd($usuario);
     }
 
     /**
@@ -78,7 +77,14 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, Usuario $usuario)
     {
-        //
+        $usuario->nome = $request->input('nome');
+        $usuario->email = $request->input('email');
+        $usuario->password = bcrypt($request->input('password'));
+        $usuario->save();
+
+        return response()->json([
+            "data" => $usuario
+        ]);
     }
 
     /**
