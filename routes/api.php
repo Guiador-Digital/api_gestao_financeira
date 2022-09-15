@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompraController;
 use App\Http\Controllers\EntradaController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Http\Request;
@@ -23,3 +24,4 @@ use Illuminate\Support\Facades\Route;
 // Route::get('usuarios', [UsuarioController::class, 'index']);
 Route::resource('usuarios', UsuarioController::class);
 Route::resource('entradas', EntradaController::class);
+Route::resource('compras', CompraController::class);
