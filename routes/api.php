@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartaoCreditoController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\EntradaController;
 use App\Http\Controllers\UsuarioController;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-// Route::get('usuarios', [UsuarioController::class, 'index']);
 Route::resource('usuarios', UsuarioController::class);
 Route::resource('entradas', EntradaController::class);
 Route::resource('compras', CompraController::class);
+Route::resource('cartoes-credito', CartaoCreditoController::class);
